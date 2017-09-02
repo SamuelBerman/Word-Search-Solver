@@ -1,10 +1,10 @@
-from PIL import Image
 from pytesseract import *
+from PIL import Image
+import os
 
-image_file = r'Test_Images\test.png'
-im = Image.open(image_file)
-text = image_to_string(im)
-text = image_file_to_string(image_file)
-text = image_file_to_string(image_file, graceful_errors=True)
-print("=====output=======\n")
-print(text)
+img = Image.open(r'Test_Images\test2.png')
+text = image_to_string(img)
+text = '\n'.join([x for x in text.split("\n") if x.strip()!=''])
+
+with open("Output.txt", "w") as text_file:
+    print(text, file=text_file)
