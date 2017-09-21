@@ -18,6 +18,9 @@ def string_to_array(string):
 
     return array
 
+
+def find_word(word):
+    word_letters = list(word)
+
 word_array = string_to_array(text)
 
-print(word_array)
