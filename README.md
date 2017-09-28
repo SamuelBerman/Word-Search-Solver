@@ -3,6 +3,9 @@
 
 
 
+
+
+
 Libraries Required: **Pillow** and **pytesseract** (via pip)
 
 Also Needed: Tesseract OCR. Windows install here: https://github.com/UB-Mannheim/tesseract/wiki
