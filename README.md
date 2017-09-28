@@ -2,6 +2,9 @@
 *A simple word search solver written in Python 3*
 
 
+
+
+
 Libraries Required: **Pillow** and **pytesseract** (via pip)
 
 Also Needed: Tesseract OCR. Windows install here: https://github.com/UB-Mannheim/tesseract/wiki
