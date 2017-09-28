@@ -1,11 +1,8 @@
 # Word-Search-Solver
 
-
 *A simple word search solver written in Python 3*
 
-
-
-
+$~$
 
 Libraries Required: **Pillow** and **pytesseract** (via pip)
 
