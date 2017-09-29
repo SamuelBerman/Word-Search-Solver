@@ -19,14 +19,41 @@ def string_to_array(string):
     return array
 
 
+def check_in_direction(array, word, x, y, dx, dy):
+    if len(word) <= 0:
+        return True
+
+    if not 0 <= y < len(array):
+        return False
+
+    if not 0 <= x < len(array[y]):
+        return False
+
+    if array[y][x] != word[0]:
+        return False
+
+    word = word[1:]
+
+    x += dx
+    y += dy
+
+    return check_in_direction(array, word, x, y, dx, dy)
+
+
 def find_word(word, array):
     chars = list(word)
 
     for y, line in enumerate(array):
         for x, char in enumerate(line):
-            if char == chars[0]:
-                print(x, y)
-                # check for the word in all directions
+            # check for the word in all directions
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    if (dx, dy) == (0, 0):
+                        continue
+
+                    if check_in_direction(array, word, x, y, dx, dy):
+                        return True
+    return False
 
 
 word_array = string_to_array(text)
