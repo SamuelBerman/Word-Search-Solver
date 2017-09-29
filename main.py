@@ -10,7 +10,7 @@ text = image_to_string(img)
 
 # create list of lists from string
 def string_to_array(string):
-    string = '\n'.join([x for x in string.split("\n") if x.strip()!=''])
+    string = '\n'.join([x for x in string.split("\n") if x.strip() != ''])
     array = []
 
     for line in string.split('\n'):
@@ -41,8 +41,6 @@ def check_in_direction(array, word, x, y, dx, dy):
 
 
 def find_word(word, array):
-    chars = list(word)
-
     for y, line in enumerate(array):
         for x, char in enumerate(line):
             # check for the word in all directions
