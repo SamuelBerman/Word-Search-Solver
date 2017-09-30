@@ -3,11 +3,6 @@ from PIL import Image
 import os
 
 
-# load image and convert to string
-img = Image.open(os.path.join(r'Test_Images', r'test2.png'))
-text = image_to_string(img)
-
-
 # create list of lists from string
 def string_to_array(string):
     string = string.upper()
@@ -76,6 +71,11 @@ def output(letters, array):
             f.write(''.join(line) + r"<br />")
         f.write(r'</pre></font>')
 
+
+# load image and convert to string
+img = Image.open(os.path.join(r'Test_Images', r'test2.png'))
+text = image_to_string(img)
+
 word_array = string_to_array(text)
-letters = find_word("", word_array)
+letters = find_word("isotope", word_array)
 output(letters, word_array)
