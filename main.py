@@ -21,7 +21,6 @@ def string_to_array(string):
 
 def check_in_direction(array, word, x, y, dx, dy, letters=None):
     letters = letters or []
-    letters.append((x, y))
 
     if len(word) <= 0:
         return letters
@@ -34,6 +33,8 @@ def check_in_direction(array, word, x, y, dx, dy, letters=None):
 
     if array[y][x] != word[0]:
         return False
+    
+    letters.append((x, y))
 
     word = word[1:]
 
