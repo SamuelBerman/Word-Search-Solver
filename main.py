@@ -20,24 +20,26 @@ def string_to_array(string):
 
 
 def check_in_direction(array, word, x, y, dx, dy):
+    yield x, y
+
     if len(word) <= 0:
-        return True
+        return
 
     if not 0 <= y < len(array):
-        return False
+        return
 
     if not 0 <= x < len(array[y]):
-        return False
+        return
 
     if array[y][x] != word[0]:
-        return False
+        return
 
     word = word[1:]
 
     x += dx
     y += dy
 
-    return check_in_direction(array, word, x, y, dx, dy)
+    yield from check_in_direction(array, word, x, y, dx, dy)
 
 
 def find_word(word, array):
@@ -49,8 +51,10 @@ def find_word(word, array):
                     if (dx, dy) == (0, 0):
                         continue
 
-                    if check_in_direction(array, word, x, y, dx, dy):
-                        return True
+                    letters = list(check_in_direction(array, word, x, y, dx, dy))
+
+                    if len(letters) == len(word):
+                        return letters
     return False
 
 
