@@ -10,8 +10,8 @@ text = image_to_string(img)
 
 # create list of lists from string
 def string_to_array(string):
-    string = '\n'.join([x for x in string.split("\n") if x.strip() != ''])
     string = string.upper()
+    string = '\n'.join([x for x in string.split("\n") if x.strip() != ''])
     array = []
 
     for line in string.split('\n'):
@@ -63,5 +63,19 @@ def find_word(word, array):
     return None
 
 
+def output(letters, array):
+    for y, line in enumerate(array):
+        for x, char in enumerate(line):
+            for letter in letters:
+                if (x, y) == letter:
+                    array[y][x] = r"<b>{}</b>".format(char)
+
+    with open('output.html', 'w+') as f:
+        f.write(r'<font size="10"><pre>')
+        for line in array:
+            f.write(''.join(line) + r"<br />")
+        f.write(r'</pre></font>')
+
 word_array = string_to_array(text)
-print(find_word("refraction", word_array))
+letters = find_word("", word_array)
+output(letters, word_array)
