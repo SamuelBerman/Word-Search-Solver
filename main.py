@@ -11,6 +11,7 @@ text = image_to_string(img)
 # create list of lists from string
 def string_to_array(string):
     string = '\n'.join([x for x in string.split("\n") if x.strip() != ''])
+    string = string.upper()
     array = []
 
     for line in string.split('\n'):
@@ -26,14 +27,14 @@ def check_in_direction(array, word, x, y, dx, dy, letters=None):
         return letters
 
     if not 0 <= y < len(array):
-        return False
+        return None
 
     if not 0 <= x < len(array[y]):
-        return False
+        return None
 
     if array[y][x] != word[0]:
-        return False
-    
+        return None
+
     letters.append((x, y))
 
     word = word[1:]
@@ -45,6 +46,8 @@ def check_in_direction(array, word, x, y, dx, dy, letters=None):
 
 
 def find_word(word, array):
+    word = word.upper()
+
     for y, line in enumerate(array):
         for x, char in enumerate(line):
             # check for the word in all directions
@@ -55,10 +58,10 @@ def find_word(word, array):
 
                     letters = check_in_direction(array, word, x, y, dx, dy)
 
-                    if letters != False:
+                    if letters != None:
                         return letters
-    return False
+    return None
 
 
 word_array = string_to_array(text)
-find_word("MELT", word_array)
+print(find_word("refraction", word_array))
