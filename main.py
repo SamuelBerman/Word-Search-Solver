@@ -72,10 +72,31 @@ def output(letters, array):
         f.write(r'</pre></font>')
 
 
-# load image and convert to string
+# load image and convert to array
+print("Starting...")
+
 img = Image.open(os.path.join(r'Test_Images', r'test2.png'))
 text = image_to_string(img)
-
 word_array = string_to_array(text)
-letters = find_word("isotope", word_array)
-output(letters, word_array)
+
+print("Successfully converted to array!")
+
+found_words = []
+
+for x in range(sum(1 for line in open('words.txt'))):
+    letters = find_word(open('words.txt').readlines()[x].strip(), word_array)
+    if letters != None:
+        found_words.append(letters)
+
+print(len(found_words), "out of", sum(1 for line in open('words.txt')), "words match!")
+
+if len(found_words) == 0:
+    print("No Matching Words!")
+    output([], word_array)
+    
+else:
+    for x in range(len(found_words)):
+        output(found_words[x], word_array)
+    print("Output complete!")
+
+print("Done!")
