@@ -7,4 +7,4 @@ Also Needed: Tesseract OCR. Windows install here: https://github.com/UB-Mannheim
 After install add the path to Tesseract OCR to your Path variables. A restart may be needed for this to take effect.
 
 
-After OCR is installed you can give it any image you want (you have to cut out just the grid part) and it should be able to process it. You can they plug in words that you want it to find, and they will become bolded in the **output.html** file.
+After OCR is installed you can give it any image you want (you have to cut out just the grid part) and it should be able to process it. You can then plug in words that you want it to find, and they will become bolded in the **output.html** file.
